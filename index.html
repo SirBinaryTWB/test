@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Audio Test</title>
+  <style>
+    #playBtn {
+      width: 150px;
+      height: 150px;
+      background: red;
+      border-radius: 50%;
+      color: white;
+      font-size: 24px;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      user-select: none;
+      margin: 100px auto;
+    }
+  </style>
+</head>
+<body>
+  <button id="playBtn">Play Audio</button>
+  <audio id="audio" src="AFG.mp3" preload="auto" playsinline></audio>
+
+  <script>
+    const btn = document.getElementById('playBtn');
+    const audio = document.getElementById('audio');
+
+    btn.addEventListener('click', () => {
+      audio.currentTime = 0;
+      audio.play().then(() => {
+        btn.textContent = 'Playing...';
+      }).catch(err => {
+        alert('Audio play failed: ' + err.message);
+      });
+    });
+  </script>
+</body>
+</html>
